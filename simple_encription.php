@@ -5,30 +5,16 @@ Simple Encription with str_replace<br>@mursids<br><br>
 <?php
 
 function search($type,$arr,$cari){
-	foreach($arr as $key=>$val)
+	foreach( $arr as $key=>$val )
     { if($type=="E") { $x=$key;$y=$val;} else { $x=$val;$y=$key;}
 	if (ord($x) == ord($cari)){
 		return $y;
 }}return $cari;	}
-$text = "@SamPLe TekS<>#$";
-$text2= "@wDSseI=xIOw<>#$";
-$key = array(
-'d' => 'A','j' => 'K','r' => 'U','A' => 'a','6' => 'k','4' => 'u',
-	'f' => 'B','3' => 'L','5' => 'V','R' => 'b','J' => 'l','0' => 'v',
-	'g' => 'C','l' => 'M','s' => 'W','B' => 'c','Z' => 'm','S' => 'w',
-	'a' => 'D','p' => 'N','x' => 'X','M' => 'd','i' => 'n','T' => 'x',
-	'I' => 'E','k' => 'O','z' => 'Y','L' => 'e','u' => 'o','Y' => 'y',
-	'h' => 'F','o' => 'P','t' => 'Z','C' => 'f','H' => 'p','7' => 'z',
-	'b' => 'G','n' => 'Q','v' => '1','K' => 'g','N' => 'q','W' => '5',
-	'1' => 'H','2' => 'R','y' => '2','O' => 'h','G' => 'r','8' => '6',
-	'e' => 'I','m' => 'S','U' => '3','D' => 'i','P' => 's','9' => '7',
-	'c' => 'J','q' => 'T','w' => '4','Q' => 'j','F' => 't','V' => '8',	
-	'E' => '9','=' => ' ','X' => '0','`' => '~','~' => '`','=' => ' ',
-	' ' => '=','"' => '%','.' => '*','*' => '"','*' => '%'); //please adding your table
 function ec($in,$key){
 	$out='';
 	for($i=0;$i<strlen($in);$i++){
 		$temp=($in[$i]);
+		//$r=golek($key,$temp);
 		$r=search("E",$key,$temp);
 		$R=str_replace($temp, $r, $temp);
 		$out=$out.$R; 
@@ -44,11 +30,27 @@ function dc($in,$key){
 	}
 	return $out;
 }		
+$text ="@SamPLe TekS<>#$"; // "ProFilex";//
+$text2= "@wDSseI=xIOw<>#$";
+$key = array(
+	'd' => 'A','j' => 'K','r' => 'U','A' => 'a','6' => 'k','4' => 'u',
+	'f' => 'B','3' => 'L','5' => 'V','R' => 'b','J' => 'l','0' => 'v',
+	'g' => 'C','l' => 'M','s' => 'W','B' => 'c','Z' => 'm','S' => 'w',
+	'a' => 'D','p' => 'N','x' => 'X','M' => 'd','i' => 'n','T' => 'x',
+	'I' => 'E','k' => 'O','z' => 'Y','L' => 'e','u' => 'o','Y' => 'y',
+	'h' => 'F','o' => 'P','t' => 'Z','C' => 'f','H' => 'p','7' => 'z',
+	'b' => 'G','n' => 'Q','v' => '1','K' => 'g','N' => 'q','W' => '5',
+	'1' => 'H','2' => 'R','y' => '2','O' => 'h','G' => 'r','8' => '6',
+	'e' => 'I','m' => 'S','U' => '3','D' => 'i','P' => 's','9' => '7',
+	'c' => 'J','q' => 'T','w' => '4','Q' => 'j','F' => 't','V' => '8',	
+	'E' => '9','=' => ' ','X' => '0','`' => '~','~' => '`','=' => ' ',
+	' ' => '=','"' => '%','.' => '*','*' => '"','*' => '%'); //please adding your table
+
 echo "<strong>Teks </strong>".$text;
 echo "<br>";		
-echo "<strong>Encript =</strong> ".search("E",$key,$text);
+echo "<strong>Encript =</strong> ".ec($text,$key);
 echo "<br>";
-echo "<strong>Decript =</strong>".search("D",$key,$text);
+echo "<strong>Decript =</strong>".dc($text,$key);
 
 $text3="A computer is a general purpose device that can be programmed to carry out a set of arithmetic or logical operations automatically. Since a sequence of operations can be readily changed, the computer can solve more than one kind of problem.
 
